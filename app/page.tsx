@@ -7,6 +7,7 @@ import { Experience } from "@/components/sections/experience";
 import { Achievements } from "@/components/sections/achievements";
 import { SocialLinks } from "@/components/sections/social-links";
 import { TimezoneClock } from "@/components/sections/timezone-clock";
+import { Projects } from "@/components/sections/projects";
 import { Gallery } from "@/components/sections/gallery";
 import { Footer } from "@/components/sections/footer";
 
@@ -65,6 +66,11 @@ export default function Home() {
           <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 transition-colors duration-300">
             <SocialLinks />
           </div>
+        </div>
+
+        {/* Projects Card */}
+        <div className="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-200 dark:border-neutral-800 p-6 mt-6 transition-colors duration-300">
+          <Projects />
         </div>
 
         {/* Gallery Card */}

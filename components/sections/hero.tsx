@@ -20,7 +20,7 @@ export function Hero() {
 
     useEffect(() => {
         setMounted(true);
-        const checkMobile = () => setIsMobile(window.innerWidth < 640);
+        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
         checkMobile();
         window.addEventListener("resize", checkMobile);
         return () => {
@@ -64,7 +64,7 @@ export function Hero() {
                 animate="visible"
                 className="flex flex-row items-start gap-4 sm:gap-6"
             >
-                {/* Profile Image - Always on left */}
+
                 <motion.div
                     variants={fadeInUp}
                     className="flex-shrink-0"

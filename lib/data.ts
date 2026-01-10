@@ -25,6 +25,7 @@ export const techStack = {
     database: ["Firebase", "Supabase", "MySQL", "SQLite"],
     ai: ["OpenAI API", "LLaMA", "Flan-T5", "NLP", "Text Processing"],
     iot: ["ESP32", "Arduino", "GPS Modules", "Raspberry Pi", "Sensors & Actuators"],
+    other: ["Git/GitHub", "Trello"],
 };
 
 // Experience
@@ -75,28 +76,38 @@ interface Project {
     title: string;
     description: string;
     tags: string[];
+    url: string;
+    image: string;
 }
 
 export const projects: Project[] = [
     {
-        title: "Tone Profiler AI",
-        description: "AI tool that analyzes and transforms the tone of text",
-        tags: ["AI", "NLP", "Next.js"],
+        title: "ChadGPT - Tone Profiler",
+        description: "Sentiment & tone profiler using FLAN-T5 and Llama 3.2",
+        tags: ["Next.js", "FastAPI", "AI/ML"],
+        url: "https://tone-profiler.vercel.app",
+        image: "/photos/tone-profiler.vercel.app_.png",
     },
     {
-        title: "Smart Attendance System",
-        description: "Face-recognition attendance system with admin dashboard",
-        tags: ["Python", "OpenCV", "React"],
+        title: "Wedding Landing Page",
+        description: "Elegant wedding invitation landing page",
+        tags: ["Next.js", "Framer Motion"],
+        url: "https://wedding-landingpage.vercel.app",
+        image: "/photos/wedding-landingpage.vercel.app_.png",
     },
     {
-        title: "NavCane GPS Tracker",
-        description: "GPS-enabled cane tracker for visually impaired users",
-        tags: ["Flutter", "ESP32", "Firebase"],
+        title: "LSPU Student Registration",
+        description: "Student registration system for LSPU",
+        tags: ["React", "Vite"],
+        url: "",
+        image: "/photos/lspu-student-reg.vercel.app_.png",
     },
     {
-        title: "FocusFlow Productivity App",
-        description: "Web app for focus tracking and productivity",
-        tags: ["React", "TypeScript", "Supabase"],
+        title: "Focus Flow",
+        description: "Productivity and focus management app",
+        tags: ["Next.js", "Productivity"],
+        url: "https://focus-flow-ecru.vercel.app",
+        image: "/photos/focus-flow-vert.vercel.app_.png",
     },
 ];
 
