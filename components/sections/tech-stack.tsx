@@ -104,10 +104,10 @@ export function TechStack() {
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
                             transition={{ duration: 0.2 }}
                             onClick={(e) => e.stopPropagation()}
-                            className="relative w-full max-w-lg max-h-[80vh] overflow-y-auto bg-white dark:bg-neutral-900 rounded-2xl shadow-2xl border border-neutral-200 dark:border-neutral-700 p-6"
+                            className="relative w-full max-w-lg max-h-[80vh] bg-white dark:bg-neutral-900 rounded-2xl shadow-2xl border border-neutral-200 dark:border-neutral-700 overflow-hidden flex flex-col"
                         >
-                            {/* Header */}
-                            <div className="flex items-center justify-between mb-6">
+                            {/* Header - Fixed */}
+                            <div className="flex items-center justify-between p-6 pb-4 border-b border-neutral-200 dark:border-neutral-800">
                                 <h2 className="text-xl font-semibold text-neutral-900 dark:text-white flex items-center gap-2">
                                     <Code2 size={20} className="text-neutral-500" />
                                     Tech Stack
@@ -120,25 +120,27 @@ export function TechStack() {
                                 </button>
                             </div>
 
-                            {/* All Categories */}
-                            <div className="space-y-5">
-                                {categories.map((category) => (
-                                    <div key={category}>
-                                        <h3 className="text-sm font-medium text-neutral-500 dark:text-neutral-400 mb-2">
-                                            {categoryLabels[category]}
-                                        </h3>
-                                        <div className="flex flex-wrap gap-2">
-                                            {techStack[category].map((tech) => (
-                                                <span
-                                                    key={tech}
-                                                    className="px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs font-medium"
-                                                >
-                                                    {tech}
-                                                </span>
-                                            ))}
+                            {/* Scrollable Content */}
+                            <div className="overflow-y-auto p-6 pt-4">
+                                <div className="space-y-5">
+                                    {categories.map((category) => (
+                                        <div key={category}>
+                                            <h3 className="text-sm font-medium text-neutral-500 dark:text-neutral-400 mb-2">
+                                                {categoryLabels[category]}
+                                            </h3>
+                                            <div className="flex flex-wrap gap-2">
+                                                {techStack[category].map((tech) => (
+                                                    <span
+                                                        key={tech}
+                                                        className="px-3 py-1.5 rounded-full border border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 text-xs font-medium"
+                                                    >
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))}
+                                </div>
                             </div>
                         </motion.div>
                     </motion.div>
