@@ -15,16 +15,20 @@ export function Hero() {
     const { resolvedTheme } = useTheme();
     const [mounted, setMounted] = useState(false);
     const [isToggled, setIsToggled] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
         setMounted(true);
-        const checkMobile = () => setIsMobile(window.innerWidth < 1024);
-        checkMobile();
-        window.addEventListener("resize", checkMobile);
+        // Detect touch device instead of screen width
+        const checkTouch = () => {
+            setIsTouchDevice(
+                'ontouchstart' in window ||
+                navigator.maxTouchPoints > 0
+            );
+        };
+        checkTouch();
         return () => {
-            window.removeEventListener("resize", checkMobile);
             if (timeoutRef.current) clearTimeout(timeoutRef.current);
         };
     }, []);
@@ -39,15 +43,15 @@ export function Hero() {
     }
 
     const handleMouseEnter = () => {
-        if (!isMobile && isDark) setIsToggled(true);
+        if (!isTouchDevice && isDark) setIsToggled(true);
     };
 
     const handleMouseLeave = () => {
-        if (!isMobile && isDark) setIsToggled(false);
+        if (!isTouchDevice && isDark) setIsToggled(false);
     };
 
     const handleClick = () => {
-        if (isMobile && isDark) {
+        if (isTouchDevice && isDark) {
             setIsToggled(true);
             if (timeoutRef.current) clearTimeout(timeoutRef.current);
             timeoutRef.current = setTimeout(() => {
