@@ -106,7 +106,7 @@ export const projects: Project[] = [
         title: "Focus Flow",
         description: "Productivity and focus management app",
         tags: ["Next.js", "Productivity"],
-        url: "https://focus-flow-ecru.vercel.app",
+        url: "https://focus-flow-vert.vercel.app",
         image: "/photos/focus-flow-vert.vercel.app_.png",
     },
 ];
