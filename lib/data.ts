@@ -5,10 +5,10 @@ export const personalInfo = {
     tagline: "Building modern web, mobile, and AI-powered systems",
     location: "Laguna, Philippines",
     email: "asnor023@gmail.com",
-    github: "https://github.com/Asnor14",
+    github: "https://github.com/SilencioOrgs",
     linkedin: "https://www.linkedin.com/in/sumdad-asnor-a-924566327",
     instagram: "https://www.instagram.com/asnor_sumdad",
-    portfolio: "https://your-portfolio.vercel.app",
+    portfolio: "https://asnorsumdad.vercel.app",
 };
 
 // About Section
@@ -21,11 +21,11 @@ My focus is on creating clean, scalable, and reliable systems — whether it's a
 // Tech Stack
 export const techStack = {
     frontend: ["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "Flutter"],
-    backend: ["Node.js", "FastAPI", "Python", "PHP", "REST APIs"],
+    backend: ["Node.js", "Python", "FastAPI", "PHP", "REST APIs"],
     database: ["Firebase", "Supabase", "MySQL", "SQLite"],
     ai: ["OpenAI API", "LLaMA", "Flan-T5", "NLP", "Text Processing"],
-    iot: ["ESP32", "Arduino", "GPS Modules", "Raspberry Pi", "Sensors & Actuators"],
-    other: ["Git/GitHub", "Trello"],
+    iot: ["ESP32", "Arduino", "Raspberry Pi", "GPS Modules", "Sensors & Actuators"],
+    other: ["Git / GitHub", "Trello"],
 };
 
 // Experience

@@ -7,12 +7,12 @@ import { techStack } from "@/lib/data";
 import { fadeInUp } from "@/lib/utils";
 
 const categoryLabels: Record<keyof typeof techStack, string> = {
-    frontend: "Frontend",
-    backend: "Backend",
-    database: "Database & Cloud",
-    ai: "AI & Data",
-    iot: "IoT & Hardware",
-    other: "Other Skills",
+    frontend: "Web & Mobile Frontend",
+    backend: "Backend & APIs",
+    database: "Databases & Backend Services",
+    ai: "AI / LLM Integration",
+    iot: "Embedded Systems & IoT",
+    other: "Development Tools",
 };
 
 export function TechStack() {
