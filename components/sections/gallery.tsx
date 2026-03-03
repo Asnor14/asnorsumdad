@@ -14,6 +14,9 @@ const galleryImages = [
     { id: 5, src: "/photos/5.jpg", alt: "Photo 5" },
     { id: 6, src: "/photos/6.jpg", alt: "Photo 6" },
     { id: 7, src: "/photos/7.jpg", alt: "Photo 7" },
+    { id: 8, src: "/photos/8.jpg", alt: "Photo 8" },
+    { id: 9, src: "/photos/9.jpg", alt: "Photo 9" },
+    { id: 10, src: "/photos/10.jpg", alt: "Photo 10" },
 ];
 
 const IMAGES_PER_PAGE = 4;

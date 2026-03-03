@@ -30,37 +30,30 @@ export const techStack = {
 
 // Experience
 interface Experience {
-    title: string;
-    company: string;
-    description: string[];
+    period: string;
+    summary: string;
 }
 
 export const experiences: Experience[] = [
     {
-        title: "Freelance Full-Stack Developer",
-        company: "HereAfter, Pal",
-        description: [
-            "Developed a scalable digital memorial platform using Next.js and Node.js with Firebase backend",
-            "Integrated ElevenLabs API to generate AI voice clones for interactive audio tributes",
-            "Implemented secure payment processing via PayMongo",
-        ],
+        period: "2019",
+        summary:
+            'Began my journey in programming by creating my first "Hello, World!" program and learning the foundations of coding.',
     },
     {
-        title: "Freelance Mobile App Developer",
-        company: "PillPal",
-        description: [
-            "Engineered the mobile ecosystem for an IoT-enabled healthcare device",
-            "Delivered a cross-platform Flutter app that communicates seamlessly with embedded systems (ESP32)",
-            "Manages medication schedules and user alerts",
-        ],
+        period: "2020",
+        summary:
+            "Started building simple games with Scratch and later explored VB.NET, where I developed a basic ordering system and gained early hands-on experience in software development.",
     },
     {
-        title: "Project-Based Mobile App Developer",
-        company: "NavCane",
-        description: [
-            "Developed a safety tracking app for an assistive technology research project using Flutter and Mapbox",
-            "Engineered real-time communication between the app and an ESP32 smart cane via Firebase Realtime Database",
-        ],
+        period: "2022 - Present",
+        summary:
+            "Began my Computer Engineering journey and actively participated in programming events, regional competitions, and hackathons, which helped shape my technical growth and collaborative skills.",
+    },
+    {
+        period: "2025 - Present",
+        summary:
+            "Expanded into professional work as a Video Editor and Full-Stack Developer, while also managing small freelance projects such as wedding websites and capstone/thesis web systems for students.",
     },
 ];
 
