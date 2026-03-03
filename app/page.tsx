@@ -10,10 +10,12 @@ import { TimezoneClock } from "@/components/sections/timezone-clock";
 import { Projects } from "@/components/sections/projects";
 import { Gallery } from "@/components/sections/gallery";
 import { Footer } from "@/components/sections/footer";
+import { BirthdayCelebration } from "@/components/sections/birthday-celebration";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-neutral-50 dark:bg-neutral-950 py-8 px-4 transition-colors duration-300">
+      <BirthdayCelebration />
       <div className="max-w-4xl mx-auto">
         {/* Hero Section with Theme Toggle */}
         <Hero />
