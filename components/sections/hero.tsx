@@ -12,11 +12,18 @@ import { BIRTHDAY_DAY, BIRTHDAY_MONTH, isBirthdayInTimeZone } from "@/lib/birthd
 import { personalInfo } from "@/lib/data";
 import { fadeInUp, staggerContainer } from "@/lib/utils";
 
+const gameLogos = [
+    "/gameLogo/lovejoyhope.png",
+    "/gameLogo/sixseven.png",
+    "/gameLogo/saythe%20word%20on%20beat.png",
+];
+
 export function Hero() {
     const { resolvedTheme } = useTheme();
     const [isToggled, setIsToggled] = useState(false);
     const [isBirthdayMode, setIsBirthdayMode] = useState(() => isBirthdayInTimeZone());
     const [isGameModalOpen, setIsGameModalOpen] = useState(false);
+    const [activeGameLogoIndex, setActiveGameLogoIndex] = useState(0);
     const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     useEffect(() => {
@@ -39,6 +46,18 @@ export function Hero() {
         document.body.style.overflow = "hidden";
         return () => {
             document.body.style.overflow = "";
+        };
+    }, [isGameModalOpen]);
+
+    useEffect(() => {
+        if (!isGameModalOpen) return;
+
+        const intervalId = setInterval(() => {
+            setActiveGameLogoIndex((previous) => (previous + 1) % gameLogos.length);
+        }, 1400);
+
+        return () => {
+            clearInterval(intervalId);
         };
     }, [isGameModalOpen]);
 
@@ -70,6 +89,11 @@ export function Hero() {
         timeoutRef.current = setTimeout(() => {
             setIsToggled(false);
         }, 3000);
+    };
+
+    const openGameModal = () => {
+        setActiveGameLogoIndex(0);
+        setIsGameModalOpen(true);
     };
 
     return (
@@ -143,18 +167,9 @@ export function Hero() {
 
                         <motion.div
                             variants={fadeInUp}
-                            className="flex flex-row sm:flex-col items-center sm:items-end gap-2 sm:min-w-[136px]"
+                            className="flex items-center sm:items-end gap-2 sm:min-w-[136px]"
                         >
                             <ThemeToggle />
-                            <Button
-                                variant="outline"
-                                size="sm"
-                                onClick={() => setIsGameModalOpen(true)}
-                                className="gap-1.5 text-xs sm:text-sm px-2 sm:px-3 py-1.5 sm:py-2"
-                            >
-                                <Gamepad2 size={12} className="sm:w-3.5 sm:h-3.5" />
-                                Play Games
-                            </Button>
                         </motion.div>
                     </div>
 
@@ -169,7 +184,7 @@ export function Hero() {
 
                     <motion.div
                         variants={fadeInUp}
-                        className="flex flex-row gap-2 sm:gap-3 mt-2 sm:mt-4"
+                        className="flex flex-wrap items-center gap-2 sm:gap-3 mt-2 sm:mt-4"
                     >
                         <Button
                             variant="primary"
@@ -188,6 +203,15 @@ export function Hero() {
                         >
                             <Send size={12} className="sm:w-3.5 sm:h-3.5" />
                             <span className="hidden sm:inline">Send </span>Email
+                        </Button>
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={openGameModal}
+                            className="gap-1.5 sm:gap-2 text-xs sm:text-sm px-2 sm:px-4 py-1.5 sm:py-2"
+                        >
+                            <Gamepad2 size={12} className="text-yellow-500 sm:w-3.5 sm:h-3.5" />
+                            <span className="hidden sm:inline">Play </span>Games
                         </Button>
                     </motion.div>
                 </div>
@@ -210,15 +234,26 @@ export function Hero() {
                             exit={{ opacity: 0, scale: 0.95, y: 18 }}
                             transition={{ duration: 0.2 }}
                             onClick={(event) => event.stopPropagation()}
-                            className="relative w-full max-w-md overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-700 shadow-2xl"
+                            className="relative w-full max-w-2xl min-h-[360px] sm:min-h-[440px] overflow-hidden rounded-2xl border border-neutral-200 dark:border-neutral-700 shadow-2xl"
                         >
-                            <Image
-                                src="/gameLogo/lovejoyhope.png"
-                                alt="Game logo"
-                                fill
-                                className="object-cover scale-105"
-                            />
-                            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={gameLogos[activeGameLogoIndex]}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.7, ease: "easeInOut" }}
+                                    className="absolute inset-0"
+                                >
+                                    <Image
+                                        src={gameLogos[activeGameLogoIndex]}
+                                        alt="Game logo"
+                                        fill
+                                        className="object-cover scale-110"
+                                    />
+                                </motion.div>
+                            </AnimatePresence>
+                            <div className="absolute inset-0 bg-black/65 backdrop-blur-sm" />
 
                             <button
                                 onClick={() => setIsGameModalOpen(false)}
@@ -228,7 +263,7 @@ export function Hero() {
                                 <X size={16} />
                             </button>
 
-                            <div className="relative z-10 px-6 py-10 text-center">
+                            <div className="relative z-10 flex min-h-[360px] sm:min-h-[440px] flex-col items-center justify-center px-6 py-10 text-center">
                                 <p className="text-[11px] font-semibold tracking-[0.2em] text-neutral-200 uppercase">
                                     Play Games
                                 </p>
@@ -236,6 +271,26 @@ export function Hero() {
                                 <p className="mt-2 text-sm text-neutral-200">
                                     Game section is under development. Check back soon.
                                 </p>
+                                <div className="mt-6 flex items-center gap-3">
+                                    {gameLogos.map((logo, index) => (
+                                        <motion.div
+                                            key={logo}
+                                            animate={{
+                                                opacity: activeGameLogoIndex === index ? 1 : 0.45,
+                                                scale: activeGameLogoIndex === index ? 1.05 : 0.92,
+                                            }}
+                                            transition={{ duration: 0.35 }}
+                                            className="relative h-11 w-11 overflow-hidden rounded-xl border border-white/35 shadow-md"
+                                        >
+                                            <Image
+                                                src={logo}
+                                                alt={`Game icon ${index + 1}`}
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        </motion.div>
+                                    ))}
+                                </div>
                             </div>
                         </motion.div>
                     </motion.div>
