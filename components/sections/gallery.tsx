@@ -7,16 +7,16 @@ import { PixelScatter } from "@/components/sections/pixel-scatter";
 import { fadeInUp } from "@/lib/utils";
 
 const galleryImages = [
-    { id: 1, src: "/photos/1.jpg", alt: "Archive photo 1" },
-    { id: 2, src: "/photos/2.jpg", alt: "Archive photo 2" },
-    { id: 3, src: "/photos/3.jpg", alt: "Archive photo 3" },
-    { id: 4, src: "/photos/4.jpg", alt: "Archive photo 4" },
-    { id: 5, src: "/photos/5.jpg", alt: "Archive photo 5" },
-    { id: 6, src: "/photos/6.jpg", alt: "Archive photo 6" },
-    { id: 7, src: "/photos/7.jpg", alt: "Archive photo 7" },
-    { id: 8, src: "/photos/8.jpg", alt: "Archive photo 8" },
-    { id: 9, src: "/photos/9.jpg", alt: "Archive photo 9" },
-    { id: 10, src: "/photos/10.jpg", alt: "Archive photo 10" },
+    { id: 1, src: "/images/gallery/1.jpg", alt: "Archive photo 1" },
+    { id: 2, src: "/images/gallery/2.jpg", alt: "Archive photo 2" },
+    { id: 3, src: "/images/gallery/3.jpg", alt: "Archive photo 3" },
+    { id: 4, src: "/images/gallery/4.jpg", alt: "Archive photo 4" },
+    { id: 5, src: "/images/gallery/5.jpg", alt: "Archive photo 5" },
+    { id: 6, src: "/images/gallery/6.jpg", alt: "Archive photo 6" },
+    { id: 7, src: "/images/gallery/7.jpg", alt: "Archive photo 7" },
+    { id: 8, src: "/images/gallery/8.jpg", alt: "Archive photo 8" },
+    { id: 9, src: "/images/gallery/9.jpg", alt: "Archive photo 9" },
+    { id: 10, src: "/images/gallery/10.jpg", alt: "Archive photo 10" },
 ];
 
 export function Gallery() {
@@ -31,7 +31,7 @@ export function Gallery() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="relative isolate border-t border-neutral-200 py-16 md:py-24"
+            className="relative isolate border-t border-neutral-200 py-12 md:py-24"
             aria-labelledby="archive-heading"
         >
             <PixelScatter active={isActive} />

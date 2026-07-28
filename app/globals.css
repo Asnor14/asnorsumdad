@@ -9,6 +9,15 @@
   --border-strong: #000000;
   --surface: #f7f7f7;
   --surface-strong: #efefef;
+
+  /* Accent colors — subtle, muted tones for icon categories */
+  --accent-frontend: #3b82f6;
+  --accent-backend: #10b981;
+  --accent-database: #f59e0b;
+  --accent-ai: #8b5cf6;
+  --accent-hardware: #ef4444;
+  --accent-tools: #6b7280;
+
   color-scheme: light;
 }
 
@@ -21,6 +30,13 @@
   --font-sans: var(--font-inter);
   --font-display: var(--font-space-grotesk);
   --font-mono: var(--font-geist-mono);
+
+  --color-accent-frontend: var(--accent-frontend);
+  --color-accent-backend: var(--accent-backend);
+  --color-accent-database: var(--accent-database);
+  --color-accent-ai: var(--accent-ai);
+  --color-accent-hardware: var(--accent-hardware);
+  --color-accent-tools: var(--accent-tools);
 }
 
 * {
@@ -59,33 +75,6 @@ footer :focus-visible {
   outline-color: #ffffff;
 }
 
-.tool-marquee {
-  contain: layout paint;
-}
-
-@keyframes tool-marquee-scroll {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
-}
-
-.tool-marquee-track {
-  animation: tool-marquee-scroll 34s linear infinite;
-}
-
-.tool-marquee-track-reverse {
-  animation-direction: reverse;
-}
-
-.tool-marquee:hover .tool-marquee-track,
-.tool-marquee:focus-within .tool-marquee-track {
-  animation-play-state: paused;
-}
-
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -108,9 +97,5 @@ footer :focus-visible {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
-  }
-
-  .tool-marquee-track {
-    animation: none;
   }
 }

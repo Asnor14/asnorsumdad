@@ -9,14 +9,14 @@ export function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     return (
-        <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white">
+        <header className="sticky top-0 z-40 border-b border-neutral-200 bg-white lg:hidden">
             <nav
                 aria-label="Primary navigation"
                 className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 sm:px-8"
             >
                 <a
                     href="#"
-                    className="font-mono text-sm font-semibold uppercase tracking-[0.18em] text-black transition-opacity duration-200 hover:opacity-65"
+                    className="inline-flex min-h-[44px] items-center font-mono text-sm font-semibold uppercase tracking-[0.18em] text-black transition-opacity duration-200 hover:opacity-65"
                     aria-label={`${personalInfo.name} home`}
                 >
                     ASNOR SUMDAD
@@ -37,7 +37,7 @@ export function Navbar() {
                 <button
                     type="button"
                     onClick={() => setIsMobileMenuOpen((current) => !current)}
-                    className="inline-flex items-center gap-2 border border-black px-3 py-2 font-mono text-xs uppercase tracking-[0.16em] text-black transition-colors duration-200 hover:bg-black hover:text-white md:hidden"
+                    className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center gap-2 border border-black px-3.5 py-2 font-mono text-xs uppercase tracking-[0.16em] text-black transition-colors duration-200 hover:bg-black hover:text-white active:bg-black active:text-white md:hidden"
                     aria-expanded={isMobileMenuOpen}
                     aria-controls="mobile-navigation"
                     aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}

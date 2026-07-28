@@ -200,7 +200,7 @@ export function GitHubActivity() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.22, ease: "easeOut" }}
-            className="relative isolate scroll-mt-28 border-t border-black py-16 md:py-24"
+            className="relative isolate scroll-mt-28 border-t border-black py-12 md:py-24"
             aria-labelledby="github-activity-heading"
         >
             <PixelScatter active={isActive} />
@@ -218,7 +218,7 @@ export function GitHubActivity() {
                 <div className="grid gap-3">
                     <h2
                         id="github-activity-heading"
-                        className="font-display text-6xl font-semibold leading-none text-black sm:text-7xl"
+                        className="font-display text-5xl font-semibold leading-none text-black sm:text-7xl"
                     >
                         {isLoading ? "--" : activity?.totalContributions ?? 0}
                     </h2>

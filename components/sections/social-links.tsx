@@ -27,7 +27,7 @@ export function SocialLinks() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="relative isolate scroll-mt-28 border-t border-black py-16 md:py-24"
+            className="relative isolate scroll-mt-28 border-t border-black py-12 md:py-24"
             aria-labelledby="contact-heading"
         >
             <PixelScatter active={isActive} />
@@ -37,7 +37,7 @@ export function SocialLinks() {
                     <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                         Contact
                     </p>
-                    <h2 id="contact-heading" className="font-display text-5xl font-semibold text-black sm:text-6xl">
+                    <h2 id="contact-heading" className="font-display text-4xl font-semibold text-black sm:text-6xl">
                         Let&apos;s build something useful.
                     </h2>
                 </div>

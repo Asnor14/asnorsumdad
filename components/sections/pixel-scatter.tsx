@@ -46,7 +46,7 @@ export function PixelScatter({ active }: { active: boolean }) {
     return (
         <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 z-20 overflow-hidden"
+            className="hidden sm:block pointer-events-none absolute inset-0 z-20 overflow-hidden"
         >
             {pixels.map((pixel, index) => (
                 <motion.span

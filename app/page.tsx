@@ -10,13 +10,15 @@ import { Hero } from "@/components/sections/hero";
 import { Navbar } from "@/components/sections/navbar";
 import { Profile } from "@/components/sections/profile";
 import { Projects } from "@/components/sections/projects";
+import { Sidebar } from "@/components/sections/sidebar";
 import { SocialLinks } from "@/components/sections/social-links";
 import { TechStack } from "@/components/sections/tech-stack";
 
 export default function Home() {
   return (
     <MotionConfig reducedMotion="user">
-      <main className="min-h-screen bg-white text-black">
+      <Sidebar />
+      <main className="min-h-screen bg-white text-black lg:ml-16">
         <Navbar />
         <Hero />
 
@@ -25,7 +27,7 @@ export default function Home() {
           <Projects />
           <TechStack />
 
-          <div className="border-t border-black py-16 md:py-24">
+          <div className="border-t border-black py-12 md:py-24">
             <Experience />
           </div>
 

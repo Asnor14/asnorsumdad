@@ -27,7 +27,7 @@ export function Profile() {
             <div className="grid gap-8 lg:grid-cols-[22rem_1fr] lg:items-stretch">
                 <figure className="relative aspect-[4/5] overflow-hidden border border-black bg-neutral-100 sm:max-w-sm lg:max-w-none">
                     <Image
-                        src="/profile.jpg"
+                        src="/images/profile.jpg"
                         alt={`${personalInfo.name} profile portrait`}
                         fill
                         sizes="(min-width: 1024px) 22rem, (min-width: 640px) 24rem, 100vw"

@@ -22,12 +22,11 @@ I build modern web platforms, mobile apps, and hardware-integrated systems using
 My focus is simple: clean interfaces, reliable systems, and practical products that solve real problems.`;
 
 export const techStack = {
-    frontend: ["React", "Next.js", "Tailwind CSS", "Flutter", "JavaScript", "TypeScript"],
-    backend: ["Node.js", "Python", "FastAPI", "PHP", "REST APIs"],
-    database: ["Firebase", "Supabase", "MySQL", "PostgreSQL", "SQLite"],
-    ai: ["OpenAI API", "LLaMA", "Flan-T5", "NLP", "Text Processing"],
-    hardware: ["ESP32", "Arduino", "Raspberry Pi", "GPS Modules", "Sensors"],
-    tools: ["Git", "GitHub", "Trello"],
+    frontend: ["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "FlutterFlow", "HTML / CSS"],
+    backend: ["Node.js", "Python", "FastAPI", "PHP", "REST APIs", "Firebase", "Supabase", "PostgreSQL", "MySQL", "SQLite"],
+    ai: ["OpenAI API", "Gemini API", "Claude", "Cursor", "Codex", "Antigravity", "n8n", "LLaMA / Ollama", "NLP"],
+    mobileAndHardware: ["Flutter", "ESP32", "Arduino", "Raspberry Pi", "GPS Modules", "Sensors"],
+    tools: ["Git", "GitHub", "Vercel", "Figma", "Canva", "Trello"],
 };
 
 interface ProfileStat {
@@ -69,9 +68,19 @@ export const experiences: Experience[] = [
             "Started Computer Engineering and joined hackathons, programming events, and technical communities.",
     },
     {
-        period: "2025",
+        period: "2023",
         summary:
-            "Expanded into freelance development, video editing, and client projects.",
+            "Worked as Virtual Assistant & Social Media Manager — built content automation workflows for multi-platform publishing.",
+    },
+    {
+        period: "2024 - 2025",
+        summary:
+            "Worked as Video Editor for Australian keto diet channel (DisruptingDiabetes) and produced AI-animated educational content for MagpieTutor Academy.",
+    },
+    {
+        period: "2025 - Present",
+        summary:
+            "Expanded into freelance full-stack development, AI automation workflows, and client systems — continuously evolving and leveraging AI to turn automated workflows into living, self-sustaining digital products.",
     },
 ];
 
@@ -81,9 +90,18 @@ interface Certificate {
     year: string;
     file: string;
     image: string;
+    credlyBadgeId?: string;
 }
 
 export const certificates: Certificate[] = [
+    {
+        title: "Python Essentials 1",
+        issuer: "Cisco Networking Academy & OpenEDG Python Institute",
+        year: "2026",
+        file: "cisco-python-essentials-1.pdf",
+        image: "cisco-python-essentials-1.png",
+        credlyBadgeId: "b0f9b703-d9d5-46d1-9d87-fcb0c0f751ae",
+    },
     {
         title: "Innovation Lab Hackathon",
         issuer: "The Innovation Lab 2026",
@@ -141,6 +159,7 @@ interface Project {
     url: string;
     group: ProjectGroupId;
     image?: string;
+    images?: string[];
     status?: string;
 }
 
@@ -152,7 +171,7 @@ export const projects: Project[] = [
         tags: ["Next.js", "Supabase", "Firebase", "Nodemailer", "Mapbox"],
         url: "https://ateaikitchen.vercel.app",
         group: "capstone",
-        image: "/photos/orderingsystem.png",
+        image: "/images/projects/orderingsystem.png",
     },
     {
         title: "HereafterPal",
@@ -173,13 +192,29 @@ export const projects: Project[] = [
         status: "Private · NDA",
     },
     {
+        title: "Rydar",
+        description:
+            "Mobile tracking application for riders to record ride telemetry, track top speed, and overlay stats onto shareable photo templates.",
+        tags: ["Flutter", "Mapbox", "Firebase", "Speed Tracking", "Photo Templates", "Mobile App"],
+        url: "",
+        group: "capstone",
+        status: "Private · Mobile App",
+        image: "/images/projects/rydar/rydar-overlay.jpg",
+        images: [
+            "/images/projects/rydar/rydar-welcome.jpg",
+            "/images/projects/rydar/rydar-map.jpg",
+            "/images/projects/rydar/rydar-overlay.jpg",
+        ],
+    },
+    {
         title: "ChadGPT - Tone Profiler",
         description:
-            "AI-powered writing tone analysis platform using sentiment and tone profiling.",
-        tags: ["Next.js", "FastAPI", "NLP", "Ollama"],
+            "AI-powered writing tone analysis platform using sentiment and tone profiling. (School project demo — FastAPI backend was hosted locally via ngrok and is currently offline).",
+        tags: ["Next.js", "FastAPI", "NLP", "Ollama", "ngrok"],
         url: "https://tone-profiler.vercel.app",
         group: "personal",
-        image: "/photos/tone-profiler.vercel.app_.png",
+        status: "Demo · Backend Offline",
+        image: "/images/projects/tone-profiler.png",
     },
     {
         title: "Wedding Landing Page",
@@ -188,7 +223,7 @@ export const projects: Project[] = [
         tags: ["Next.js", "Framer Motion"],
         url: "https://wedding-landingpage.vercel.app",
         group: "wedding",
-        image: "/photos/wedding-landingpage.vercel.app_.png",
+        image: "/images/projects/wedding-landingpage.png",
     },
     {
         title: "Daniel & Giada Wedding Website",
@@ -197,7 +232,7 @@ export const projects: Project[] = [
         tags: ["Next.js", "Framer Motion"],
         url: "https://daniel-giada-wedding.vercel.app",
         group: "wedding",
-        image: "/photos/wedding-landingpage.vercel.app_.png",
+        image: "/images/projects/wedding-landingpage.png",
     },
     {
         title: "Carl Joseph & Shania Mae Wedding Website",
@@ -206,7 +241,7 @@ export const projects: Project[] = [
         tags: ["Next.js", "Framer Motion"],
         url: "https://carl-joseph-and-shania-mae.vercel.app",
         group: "wedding",
-        image: "/photos/wedding-landingpage.vercel.app_.png",
+        image: "/images/projects/wedding-landingpage.png",
     },
     {
         title: "Rameez & Kris Wedding Website",
@@ -215,7 +250,7 @@ export const projects: Project[] = [
         tags: ["Next.js", "Framer Motion"],
         url: "https://rameez-kris-i13a.vercel.app",
         group: "wedding",
-        image: "/photos/wedding-landingpage.vercel.app_.png",
+        image: "/images/projects/wedding-landingpage.png",
     },
     {
         title: "Godfrey & Vanessa Wedding Website",
@@ -224,7 +259,7 @@ export const projects: Project[] = [
         tags: ["Next.js", "Framer Motion"],
         url: "https://godfreyvanessa.vercel.app",
         group: "wedding",
-        image: "/photos/wedding-landingpage.vercel.app_.png",
+        image: "/images/projects/wedding-landingpage.png",
     },
     {
         title: "LSPU Student Registration",
@@ -233,7 +268,7 @@ export const projects: Project[] = [
         tags: ["React", "Vite"],
         url: "",
         group: "personal",
-        image: "/photos/lspu-student-reg.vercel.app_.png",
+        image: "/images/projects/lspu-student-reg.png",
     },
     {
         title: "Focus Flow",
@@ -242,7 +277,17 @@ export const projects: Project[] = [
         tags: ["Next.js", "Productivity"],
         url: "https://focus-flow-vert.vercel.app",
         group: "personal",
-        image: "/photos/focus-flow-vert.vercel.app_.png",
+        image: "/images/projects/focus-flow.png",
+    },
+    {
+        title: "AI Facebook Content Automation",
+        description:
+            "n8n workflow that uses the Gemini API to suggest content topics, generates matching images on demand, and schedules Facebook posts via the Graph API/HTTP Request node — all triggered through Telegram bot commands. Self-hosted locally on a Raspberry Pi.",
+        tags: ["n8n", "Gemini API", "Telegram Bot API", "Facebook Graph API", "Raspberry Pi"],
+        url: "",
+        group: "personal",
+        status: "Personal · Self-hosted",
+        image: "/images/projects/n8n-workflow.png",
     },
 ];
 

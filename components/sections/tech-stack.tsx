@@ -1,9 +1,10 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
 import {
     Bot,
     Braces,
+    ChevronDown,
+    ChevronUp,
     Cloud,
     Code2,
     Cpu,
@@ -11,112 +12,218 @@ import {
     Figma,
     GitBranch,
     Github,
+    Layers,
     Palette,
     PenTool,
     Server,
     Smartphone,
+    Sparkles,
     Terminal,
+    Workflow,
 } from "lucide-react";
-import { type ComponentType, useRef } from "react";
+import { type ComponentType, useRef, useState } from "react";
 import { PixelScatter } from "@/components/sections/pixel-scatter";
-import { fadeInUp } from "@/lib/utils";
 
-const toolMarquee: Array<{ name: string; Icon: ComponentType<{ size?: number; className?: string }> }> = [
-    { name: "React", Icon: Code2 },
-    { name: "Next.js", Icon: Braces },
-    { name: "Tailwind CSS", Icon: Palette },
-    { name: "Flutter", Icon: Smartphone },
-    { name: "JavaScript", Icon: Code2 },
-    { name: "TypeScript", Icon: Braces },
-    { name: "Node.js", Icon: Server },
-    { name: "Python", Icon: Terminal },
-    { name: "REST APIs", Icon: Server },
-    { name: "FastAPI", Icon: Terminal },
-    { name: "PHP", Icon: Code2 },
-    { name: "Firebase", Icon: Cloud },
-    { name: "Supabase", Icon: Database },
-    { name: "MySQL", Icon: Database },
-    { name: "PostgreSQL", Icon: Database },
-    { name: "SQLite", Icon: Database },
-    { name: "OpenAI API", Icon: Bot },
-    { name: "LLaMA", Icon: Bot },
-    { name: "Flan-T5", Icon: Bot },
-    { name: "NLP", Icon: Bot },
-    { name: "ESP32", Icon: Cpu },
-    { name: "Arduino", Icon: Cpu },
-    { name: "Raspberry Pi", Icon: Cpu },
-    { name: "Sensors", Icon: Cpu },
-    { name: "Figma", Icon: Figma },
-    { name: "Canva", Icon: PenTool },
-    { name: "Git", Icon: GitBranch },
-    { name: "GitHub", Icon: Github },
-    { name: "Trello", Icon: PenTool },
-    { name: "Vercel", Icon: Cloud },
+type AccentColor =
+    | "accent-frontend"
+    | "accent-backend"
+    | "accent-database"
+    | "accent-ai"
+    | "accent-hardware"
+    | "accent-tools";
+
+interface ToolItem {
+    name: string;
+    Icon: ComponentType<{ size?: number; className?: string }>;
+}
+
+interface StackCategoryGroup {
+    title: string;
+    color: AccentColor;
+    items: ToolItem[];
+}
+
+const categorizedTools: StackCategoryGroup[] = [
+    {
+        title: "FRONTEND",
+        color: "accent-frontend",
+        items: [
+            { name: "JavaScript", Icon: Code2 },
+            { name: "TypeScript", Icon: Braces },
+            { name: "React", Icon: Code2 },
+            { name: "Next.js", Icon: Braces },
+            { name: "Tailwind CSS", Icon: Palette },
+            { name: "FlutterFlow", Icon: Layers },
+            { name: "HTML / CSS", Icon: Code2 },
+        ],
+    },
+    {
+        title: "BACKEND & DATABASE",
+        color: "accent-backend",
+        items: [
+            { name: "Node.js", Icon: Server },
+            { name: "Python", Icon: Terminal },
+            { name: "FastAPI", Icon: Terminal },
+            { name: "PHP", Icon: Code2 },
+            { name: "REST APIs", Icon: Server },
+            { name: "Firebase", Icon: Cloud },
+            { name: "Supabase", Icon: Database },
+            { name: "PostgreSQL", Icon: Database },
+            { name: "MySQL", Icon: Database },
+            { name: "SQLite", Icon: Database },
+        ],
+    },
+    {
+        title: "AI & AUTOMATION",
+        color: "accent-ai",
+        items: [
+            { name: "OpenAI API", Icon: Bot },
+            { name: "Gemini API", Icon: Bot },
+            { name: "Claude", Icon: Sparkles },
+            { name: "Cursor", Icon: Sparkles },
+            { name: "Codex", Icon: Sparkles },
+            { name: "Antigravity", Icon: Sparkles },
+            { name: "n8n", Icon: Workflow },
+            { name: "LLaMA / Ollama", Icon: Bot },
+            { name: "NLP", Icon: Bot },
+        ],
+    },
+    {
+        title: "MOBILE & HARDWARE",
+        color: "accent-hardware",
+        items: [
+            { name: "Flutter", Icon: Smartphone },
+            { name: "ESP32", Icon: Cpu },
+            { name: "Arduino", Icon: Cpu },
+            { name: "Raspberry Pi", Icon: Cpu },
+            { name: "GPS Modules", Icon: Cpu },
+            { name: "Sensors", Icon: Cpu },
+        ],
+    },
+    {
+        title: "TOOLS & PLATFORMS",
+        color: "accent-tools",
+        items: [
+            { name: "Git", Icon: GitBranch },
+            { name: "GitHub", Icon: Github },
+            { name: "Vercel", Icon: Cloud },
+            { name: "Figma", Icon: Figma },
+            { name: "Canva", Icon: PenTool },
+            { name: "Trello", Icon: PenTool },
+        ],
+    },
 ];
 
-function ToolMarqueeRow({ reverse = false }: { reverse?: boolean }) {
-    const items = [...toolMarquee, ...toolMarquee];
+// Merged flat list of tools for collapsed view (Frontend + Backend + all tools merged)
+const mergedTools = categorizedTools.flatMap((cat) =>
+    cat.items.map((item) => ({ ...item, color: cat.color }))
+);
 
-    return (
-        <div className="tool-marquee w-full max-w-full overflow-hidden border-y border-neutral-200 bg-white">
-            <div
-                className={`tool-marquee-track flex w-max ${
-                    reverse ? "tool-marquee-track-reverse" : ""
-                }`}
-                aria-hidden="true"
-            >
-                {items.map(({ name, Icon }, index) => (
-                    <div
-                        key={`${name}-${index}`}
-                        className="flex h-16 min-w-[13rem] items-center justify-center gap-3 border-r border-neutral-200 px-7 text-neutral-600"
-                    >
-                        <Icon size={18} className="text-neutral-500" />
-                        <span className="font-mono text-sm font-semibold tracking-[0.12em]">
-                            {name}
-                        </span>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-}
+const iconColorMap: Record<AccentColor, string> = {
+    "accent-frontend": "text-accent-frontend",
+    "accent-backend": "text-accent-backend",
+    "accent-database": "text-accent-database",
+    "accent-ai": "text-accent-ai",
+    "accent-hardware": "text-accent-hardware",
+    "accent-tools": "text-accent-tools",
+};
 
 export function TechStack() {
     const ref = useRef(null);
-    const isActive = useInView(ref, { once: false, margin: "-50px" });
+    const [isExpanded, setIsExpanded] = useState(false);
+
+    const toggleExpanded = () => {
+        setIsExpanded((prev) => !prev);
+    };
 
     return (
-        <motion.section
+        <section
             id="stack"
             ref={ref}
-            variants={fadeInUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            className="relative isolate scroll-mt-28 border-t border-black py-16 md:py-24"
+            className="relative isolate scroll-mt-28 border-t border-black py-12 md:py-16"
             aria-labelledby="stack-heading"
         >
-            <PixelScatter active={isActive} />
+            <PixelScatter active={true} />
 
-            <div className="mb-10 grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
-                <div>
-                    <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
-                        Stack
+            <div className="relative z-30 mb-8 flex flex-wrap items-end justify-between gap-4">
+                <div className="max-w-2xl">
+                    <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
+                        Stack & Tools
                     </p>
-                    <h2 id="stack-heading" className="font-display text-4xl font-semibold text-black sm:text-5xl">
+                    <h2 id="stack-heading" className="font-display text-3xl font-semibold text-black sm:text-4xl">
                         Tools I use to ship.
                     </h2>
+                    <p className="mt-3 text-base leading-relaxed text-neutral-600">
+                        The tools, frameworks, and platforms I reach for — across front end, back end, AI, mobile, hardware, and infrastructure.
+                    </p>
                 </div>
-                <p className="max-w-2xl text-base leading-7 text-neutral-600 lg:justify-self-end">
-                    A focused moving index of the tools, platforms, and hardware I use across web,
-                    mobile, AI, and IoT work.
-                </p>
+
+                <button
+                    type="button"
+                    onClick={toggleExpanded}
+                    className="relative z-30 inline-flex min-h-[44px] cursor-pointer items-center gap-2 border border-black bg-white px-4 py-2.5 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-black transition-all duration-200 hover:bg-black hover:text-white active:bg-black active:text-white shadow-xs"
+                    aria-expanded={isExpanded}
+                    aria-label={isExpanded ? "Collapse to merged view" : "Sort by categories"}
+                >
+                    <span>{isExpanded ? "Collapse View ↑" : "View Categorized ↓"}</span>
+                    {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                </button>
             </div>
 
-            <div className="relative w-full max-w-full overflow-hidden border border-neutral-200 bg-white py-4">
-                <ToolMarqueeRow />
-                <ToolMarqueeRow reverse />
-            </div>
-        </motion.section>
+            {/* Content Display */}
+            {isExpanded ? (
+                /* Sorted Categorized View */
+                <div className="relative z-20 space-y-10">
+                    {categorizedTools.map((cat) => (
+                        <div key={cat.title} className="space-y-3">
+                            <h3 className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-neutral-500">
+                                {cat.title}
+                            </h3>
+                            <div className="flex flex-wrap gap-2.5">
+                                {cat.items.map(({ name, Icon }) => (
+                                    <div
+                                        key={name}
+                                        className="inline-flex items-center gap-2 border border-neutral-300 bg-white px-3.5 py-2 font-mono text-sm tracking-[0.03em] text-neutral-800 transition-colors duration-150 hover:border-black"
+                                    >
+                                        <Icon size={15} className={iconColorMap[cat.color]} />
+                                        {name}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            ) : (
+                /* Merged Un-sorted View (Frontend & Backend merged) */
+                <div className="relative z-20">
+                    <div className="flex flex-wrap gap-2.5">
+                        {mergedTools.map(({ name, Icon, color }) => (
+                            <div
+                                key={name}
+                                className="inline-flex items-center gap-2 border border-neutral-300 bg-white px-3.5 py-2 font-mono text-sm tracking-[0.03em] text-neutral-800 transition-colors duration-150 hover:border-black"
+                            >
+                                <Icon size={15} className={iconColorMap[color]} />
+                                {name}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {/* Bottom Toggle Button when Expanded */}
+            {isExpanded && (
+                <div className="relative z-30 mt-10 flex justify-center border-t border-neutral-100 pt-6">
+                    <button
+                        type="button"
+                        onClick={toggleExpanded}
+                        className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 border border-black bg-white px-6 py-2.5 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-black transition-colors duration-200 hover:bg-black hover:text-white active:bg-black active:text-white shadow-xs"
+                        aria-label="Collapse tech stack"
+                    >
+                        <span>Collapse View ↑</span>
+                        <ChevronUp size={15} />
+                    </button>
+                </div>
+            )}
+        </section>
     );
 }
