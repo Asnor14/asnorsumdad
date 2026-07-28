@@ -39,6 +39,14 @@ export const metadata: Metadata = {
     "AI",
     "Philippines",
   ],
+  icons: {
+    icon: [
+      { url: "/icon-as.png", type: "image/png" },
+      { url: "/icon.png", type: "image/png" },
+    ],
+    shortcut: "/icon-as.png",
+    apple: "/icon-as.png",
+  },
   authors: [{ name: "Asnor Sumdad" }],
   creator: "Asnor Sumdad",
   openGraph: {
