@@ -22,12 +22,12 @@ export default function Home() {
         <Navbar />
         <Hero />
 
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="mx-auto max-w-5xl px-5 sm:px-8">
           <Profile />
           <Projects />
           <TechStack />
 
-          <div className="border-t border-black py-12 md:py-24">
+          <div className="border-t border-black py-10 md:py-16">
             <Experience />
           </div>
 

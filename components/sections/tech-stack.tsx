@@ -3,7 +3,6 @@
 import {
     Bot,
     Braces,
-    ChevronDown,
     ChevronUp,
     Cloud,
     Code2,
@@ -145,29 +144,16 @@ export function TechStack() {
         >
             <PixelScatter active={true} />
 
-            <div className="relative z-30 mb-8 flex flex-wrap items-end justify-between gap-4">
-                <div className="max-w-2xl">
-                    <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
-                        Stack & Tools
-                    </p>
-                    <h2 id="stack-heading" className="font-display text-3xl font-semibold text-black sm:text-4xl">
-                        Tools I use to ship.
-                    </h2>
-                    <p className="mt-3 text-base leading-relaxed text-neutral-600">
-                        The tools, frameworks, and platforms I reach for — across front end, back end, AI, mobile, hardware, and infrastructure.
-                    </p>
-                </div>
-
-                <button
-                    type="button"
-                    onClick={toggleExpanded}
-                    className="relative z-30 inline-flex min-h-[44px] cursor-pointer items-center gap-2 border border-black bg-white px-4 py-2.5 font-mono text-xs font-semibold uppercase tracking-[0.16em] text-black transition-all duration-200 hover:bg-black hover:text-white active:bg-black active:text-white shadow-xs"
-                    aria-expanded={isExpanded}
-                    aria-label={isExpanded ? "Collapse to merged view" : "Sort by categories"}
-                >
-                    <span>{isExpanded ? "Collapse View ↑" : "View Categorized ↓"}</span>
-                    {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-                </button>
+            <div className="relative z-30 mb-8 max-w-2xl">
+                <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-neutral-500">
+                    Stack & Tools
+                </p>
+                <h2 id="stack-heading" className="font-display text-3xl font-semibold text-black sm:text-4xl">
+                    Tools I use to ship.
+                </h2>
+                <p className="mt-3 text-base leading-relaxed text-neutral-600">
+                    The tools, frameworks, and platforms I reach for — across front end, back end, AI, mobile, hardware, and infrastructure.
+                </p>
             </div>
 
             {/* Content Display */}
@@ -194,10 +180,10 @@ export function TechStack() {
                     ))}
                 </div>
             ) : (
-                /* Merged Un-sorted View (Frontend & Backend merged) */
+                /* Merged Un-sorted View (Top 10 tools) */
                 <div className="relative z-20">
                     <div className="flex flex-wrap gap-2.5">
-                        {mergedTools.map(({ name, Icon, color }) => (
+                        {mergedTools.slice(0, 10).map(({ name, Icon, color }) => (
                             <div
                                 key={name}
                                 className="inline-flex items-center gap-2 border border-neutral-300 bg-white px-3.5 py-2 font-mono text-sm tracking-[0.03em] text-neutral-800 transition-colors duration-150 hover:border-black"
@@ -206,6 +192,16 @@ export function TechStack() {
                                 {name}
                             </div>
                         ))}
+
+                        {mergedTools.length > 10 && (
+                            <button
+                                type="button"
+                                onClick={toggleExpanded}
+                                className="inline-flex cursor-pointer items-center gap-1 border border-dashed border-neutral-400 bg-neutral-50 px-3.5 py-2 font-mono text-sm tracking-[0.03em] text-neutral-600 transition-colors hover:border-black hover:bg-black hover:text-white"
+                            >
+                                +{mergedTools.length - 10} more
+                            </button>
+                        )}
                     </div>
                 </div>
             )}

@@ -12,10 +12,10 @@ const footerLinks = [
 
 export function Footer() {
     return (
-        <footer className="bg-black px-5 py-10 text-white sm:px-8">
-            <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-[1fr_auto] md:items-end">
+        <footer className="bg-black px-5 py-8 text-white sm:px-8">
+            <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-[1fr_auto] md:items-end">
                 <div>
-                    <p className="font-display text-3xl font-semibold sm:text-4xl">
+                    <p className="font-display text-2xl font-semibold sm:text-3xl">
                         Let&apos;s build something useful.
                     </p>
                     <div className="mt-6 flex flex-wrap gap-x-5 gap-y-3">

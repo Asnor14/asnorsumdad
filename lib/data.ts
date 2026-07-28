@@ -17,7 +17,7 @@ export const personalInfo = {
 
 export const aboutContent = `I'm a full-stack developer with experience in software engineering, IoT, and AI-powered applications.
 
-I build modern web platforms, mobile apps, and hardware-integrated systems using tools like Next.js, Flutter, FastAPI, Firebase, Supabase, and ESP32.
+I also have hands-on experience as a virtual assistant running automation workflows with n8n, and as a video editor producing content for clients — so I understand both the technical build and the day-to-day operations side of a business.
 
 My focus is simple: clean interfaces, reliable systems, and practical products that solve real problems.`;
 
@@ -70,7 +70,7 @@ export const experiences: Experience[] = [
     {
         period: "2023",
         summary:
-            "Worked as Virtual Assistant & Social Media Manager — built content automation workflows for multi-platform publishing.",
+            "Worked as Virtual Assistant & Social Media Manager — built content automation workflows using n8n for multi-platform publishing.",
     },
     {
         period: "2024 - 2025",

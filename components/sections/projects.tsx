@@ -526,38 +526,38 @@ export function Projects() {
         <motion.section
             id="work"
             ref={ref}
-            className="relative isolate scroll-mt-28 py-12 md:py-24"
+            className="relative isolate scroll-mt-28 py-12 md:py-16"
             aria-labelledby="work-heading"
         >
             <PixelScatter active={isActive} />
 
-            <div className="mb-10 max-w-3xl">
-                <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
+            <div className="mb-8 max-w-2xl">
+                <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                     Selected Work / Projects
                 </p>
-                <h2 id="work-heading" className="font-display text-4xl font-semibold text-black sm:text-6xl">
+                <h2 id="work-heading" className="font-display text-3xl font-semibold text-black sm:text-4xl">
                     Project gallery.
                 </h2>
             </div>
 
-            <div className="space-y-12 sm:space-y-16">
+            <div className="space-y-10 sm:space-y-12">
                 {projectGroups.map((group, groupIndex) => {
                     const groupProjects = projects.filter((project) => project.group === group.id);
 
                     return (
                         <section
                             key={group.id}
-                            className="border-t border-black pt-8"
+                            className="border-t border-black pt-6"
                             aria-labelledby={`${group.id}-projects-heading`}
                         >
-                            <div className="mb-6 grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+                            <div className="mb-5 grid gap-4 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
                                 <div>
-                                    <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
+                                    <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                                         {String(groupIndex + 1).padStart(2, "0")} / {String(groupProjects.length).padStart(2, "0")}
                                     </p>
                                     <h3
                                         id={`${group.id}-projects-heading`}
-                                        className="font-display text-2xl font-semibold leading-tight text-black sm:text-4xl"
+                                        className="font-display text-xl font-semibold leading-tight text-black sm:text-2xl"
                                     >
                                         {group.label}
                                     </h3>

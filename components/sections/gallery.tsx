@@ -31,16 +31,16 @@ export function Gallery() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-50px" }}
-            className="relative isolate border-t border-neutral-200 py-12 md:py-24"
+            className="relative isolate border-t border-neutral-200 py-12 md:py-16"
             aria-labelledby="archive-heading"
         >
             <PixelScatter active={isActive} />
 
-            <div className="mb-10">
-                <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
+            <div className="mb-6">
+                <p className="mb-2 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                     Archive
                 </p>
-                <h2 id="archive-heading" className="font-display text-4xl font-semibold text-black sm:text-5xl">
+                <h2 id="archive-heading" className="font-display text-3xl font-semibold text-black sm:text-4xl">
                     Behind the work.
                 </h2>
             </div>

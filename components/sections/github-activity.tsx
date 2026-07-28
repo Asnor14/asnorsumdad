@@ -200,25 +200,25 @@ export function GitHubActivity() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.22, ease: "easeOut" }}
-            className="relative isolate scroll-mt-28 border-t border-black py-12 md:py-24"
+            className="relative isolate scroll-mt-28 border-t border-black py-12 md:py-16"
             aria-labelledby="github-activity-heading"
         >
             <PixelScatter active={isActive} />
 
-            <div className="mb-10 grid gap-5">
+            <div className="mb-6 grid gap-4">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                     <p className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-neutral-500">
                         GitHub Activity
                     </p>
-                    <span className="inline-flex border border-neutral-200 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-600">
+                    <span className="inline-flex border border-neutral-200 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.14em] text-neutral-600">
                         @{username}
                     </span>
                 </div>
 
-                <div className="grid gap-3">
+                <div className="grid gap-2">
                     <h2
                         id="github-activity-heading"
-                        className="font-display text-5xl font-semibold leading-none text-black sm:text-7xl"
+                        className="font-display text-4xl font-semibold leading-none text-black sm:text-5xl"
                     >
                         {isLoading ? "--" : activity?.totalContributions ?? 0}
                     </h2>
@@ -228,13 +228,13 @@ export function GitHubActivity() {
                 </div>
 
                 <div className="flex flex-wrap gap-2">
-                    <span className="inline-flex border border-neutral-200 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-600">
+                    <span className="inline-flex border border-neutral-200 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.14em] text-neutral-600">
                         Longest streak · {activityStats.longestStreak} days
                     </span>
-                    <span className="inline-flex border border-neutral-200 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-600">
+                    <span className="inline-flex border border-neutral-200 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.14em] text-neutral-600">
                         Best month · {activityStats.bestMonth}
                     </span>
-                    <span className="inline-flex border border-neutral-200 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-neutral-600">
+                    <span className="inline-flex border border-neutral-200 px-2 py-0.5 font-mono text-[9px] uppercase tracking-[0.14em] text-neutral-600">
                         Active days · {activityStats.activeDays}
                     </span>
                 </div>
